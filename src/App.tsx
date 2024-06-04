@@ -4,10 +4,12 @@ import CustomRadioInput from "./components/CustomRadioInput";
 import CustomCheckboxInput from "./components/CustomCheckboxInput";
 import CustomTextArea from "./components/CustomTextArea";
 import CustomError from "./components/CustomError";
+import SuccessMessage from "./components/SuccessMessage";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useEffect, useState } from "react";
 
 export type FormInputType = {
   first_name: string;
@@ -37,17 +39,31 @@ const schema = yup.object().shape({
 });
 
 function App() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<FormInputType>({
-    resolver: yupResolver(schema),
-  });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const { register, handleSubmit, watch, formState, reset } =
+    useForm<FormInputType>({
+      resolver: yupResolver(schema),
+    });
+
+  const { errors } = formState;
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setShowSuccessMessage(true);
+
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [formState.isSubmitSuccessful]);
 
   const onSubmit: SubmitHandler<FormInputType> = (data) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     console.log(data);
+    reset();
   };
 
   return (
@@ -121,9 +137,7 @@ function App() {
               register={register}
               fieldId="agree"
             />
-            {errors.agree && (
-              <CustomError message={errors.agree.message} />
-            )}
+            {errors.agree && <CustomError message={errors.agree.message} />}
           </div>
           <button
             type="submit"
@@ -131,6 +145,7 @@ function App() {
           >
             Submit
           </button>
+          {showSuccessMessage && <SuccessMessage />}
         </form>
       </div>
     </main>
