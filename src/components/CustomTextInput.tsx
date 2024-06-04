@@ -1,6 +1,7 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
 import CustomInputLabel from "./CustomInputLabel";
 import { FormInputType } from "../App";
+import CustomError from "./CustomError";
 
 type CustomTextInputProps = Omit<
   React.HTMLProps<HTMLInputElement>,
@@ -27,7 +28,7 @@ const CustomTextInput = ({
 }: CustomTextInputProps) => {
   const isError = errors ? true : false;
   return (
-    <div className="flex flex-col mb-6">
+    <div className="flex flex-col mb-6 flex-1">
       <CustomInputLabel htmlFor={inputProps.id} label={label} />
       <input
         type="text"
@@ -39,7 +40,7 @@ const CustomTextInput = ({
         }
       />
       {isError && (
-        <span className="text-red-500 text-sm">{errors?.message}</span>
+        <CustomError message={errors?.message} />
       )}
     </div>
   );

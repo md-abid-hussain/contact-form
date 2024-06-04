@@ -3,6 +3,7 @@ import CustomTextInput from "./components/CustomTextInput";
 import CustomRadioInput from "./components/CustomRadioInput";
 import CustomCheckboxInput from "./components/CustomCheckboxInput";
 import CustomTextArea from "./components/CustomTextArea";
+import CustomError from "./components/CustomError";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -50,26 +51,28 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen p-[14px] bg-primary-green-200">
-      <div className="p-6 bg-white rounded-xl shadow">
+    <main className="min-h-screen px-[14px] py-4 bg-primary-green-200">
+      <div className="p-6 bg-white rounded-xl shadow md:max-w-[740px] mx-auto">
         <h1 className="text-2xl font-bold mb-9 text-neutral-grey-900">
           Contact Us
         </h1>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-          <CustomTextInput
-            label="First Name"
-            id="first_name"
-            register={register}
-            fieldId="first_name"
-            errors={errors.first_name}
-          />
-          <CustomTextInput
-            label="Last Name"
-            id="last_name"
-            register={register}
-            fieldId="last_name"
-            errors={errors.last_name}
-          />
+          <div className="md:flex md:gap-4">
+            <CustomTextInput
+              label="First Name"
+              id="first_name"
+              register={register}
+              fieldId="first_name"
+              errors={errors.first_name}
+            />
+            <CustomTextInput
+              label="Last Name"
+              id="last_name"
+              register={register}
+              fieldId="last_name"
+              errors={errors.last_name}
+            />
+          </div>
           <CustomTextInput
             label="Email Address"
             id="email"
@@ -80,26 +83,26 @@ function App() {
           />
           <div className="flex flex-col">
             <CustomInputLabel label="Query Type" />
-            <CustomRadioInput
-              label="General Enquiry"
-              id="general_enquiry"
-              value="General Enquiry"
-              register={register}
-              fieldId="query_type"
-              checked={watch("query_type") === "General Enquiry"}
-            />
-            <CustomRadioInput
-              label="Support Request"
-              id="support_request"
-              value="Support Request"
-              register={register}
-              fieldId="query_type"
-              checked={watch("query_type") === "Support Request"}
-            />
+            <div className="md:flex md:gap-4">
+              <CustomRadioInput
+                label="General Enquiry"
+                id="general_enquiry"
+                value="General Enquiry"
+                register={register}
+                fieldId="query_type"
+                checked={watch("query_type") === "General Enquiry"}
+              />
+              <CustomRadioInput
+                label="Support Request"
+                id="support_request"
+                value="Support Request"
+                register={register}
+                fieldId="query_type"
+                checked={watch("query_type") === "Support Request"}
+              />
+            </div>
             {errors.query_type && (
-              <span className="text-red-500 text-sm -mt-3">
-                {errors.query_type.message}
-              </span>
+              <CustomError message={errors.query_type.message} isRadio={true} />
             )}
           </div>
           <div className="mt-3">
@@ -119,9 +122,7 @@ function App() {
               fieldId="agree"
             />
             {errors.agree && (
-              <span className="text-red-500 text-sm">
-                {errors.agree.message}
-              </span>
+              <CustomError message={errors.agree.message} />
             )}
           </div>
           <button

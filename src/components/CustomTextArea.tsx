@@ -1,6 +1,7 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
 import { FormInputType } from "../App";
 import CustomInputLabel from "./CustomInputLabel";
+import CustomError from "./CustomError";
 
 type CustomTextAreaProps = Omit<
   React.HTMLProps<HTMLTextAreaElement>,
@@ -43,9 +44,7 @@ const CustomTextArea = ({
           (isError ? " border-primary-red focus:border-primary-red" : "")
         }
       ></textarea>
-      {isError && (
-        <span className="text-primary-red text-sm">{errors?.message}</span>
-      )}
+      {isError && <CustomError message={errors?.message} />}
     </div>
   );
 };

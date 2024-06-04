@@ -27,7 +27,7 @@ const CustomRadioInput = ({
     <label
       htmlFor={radioProps.id}
       className={
-        "flex items-center gap-3 border-2 border-neutral-grey-500 rounded-lg py-3 px-[14px] mb-[0.75rem] cursor-pointer " +
+        "flex flex-1 items-center gap-3 border-2 border-neutral-grey-500 rounded-lg py-3 px-[14px] mb-[0.75rem] cursor-pointer " +
         selectedColor
       }
     >
