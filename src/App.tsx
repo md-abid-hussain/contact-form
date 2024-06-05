@@ -122,13 +122,13 @@ function App() {
             )}
           </div>
           {/* <div> */}
-            <CustomTextArea
-              label="Message"
-              id="message"
-              register={register}
-              fieldId="message"
-              errors={errors.message}
-            />
+          <CustomTextArea
+            label="Message"
+            id="message"
+            register={register}
+            fieldId="message"
+            errors={errors.message}
+          />
           {/* </div> */}
           <div className="my-6">
             <CustomCheckboxInput

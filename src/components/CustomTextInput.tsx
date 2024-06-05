@@ -39,9 +39,7 @@ const CustomTextInput = ({
           (isError ? "border-primary-red focus:border-primary-red" : "")
         }
       />
-      {isError && (
-        <CustomError message={errors?.message} />
-      )}
+      {isError && <CustomError message={errors?.message} />}
     </div>
   );
 };

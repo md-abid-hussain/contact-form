@@ -1,4 +1,3 @@
-
 import { UseFormRegister } from "react-hook-form";
 import { FormInputType } from "../App";
 type CustomCheckboxInputProps = Omit<
