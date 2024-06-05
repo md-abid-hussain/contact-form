@@ -68,7 +68,7 @@ function App() {
 
   return (
     <main className="min-h-screen px-[14px] py-4 bg-primary-green-200 grid place-content-center">
-      <div className="p-6 bg-white rounded-xl shadow md:max-w-[740px] mx-auto">
+      <div className="p-6 bg-white rounded-xl shadow md:w-[740px] mx-auto">
         <h1 className="text-2xl font-bold mb-4 text-neutral-grey-900">
           Contact Us
         </h1>
