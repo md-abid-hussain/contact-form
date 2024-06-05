@@ -67,9 +67,9 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen px-[14px] py-4 bg-primary-green-200">
+    <main className="min-h-screen px-[14px] py-4 bg-primary-green-200 grid place-content-center">
       <div className="p-6 bg-white rounded-xl shadow md:max-w-[740px] mx-auto">
-        <h1 className="text-2xl font-bold mb-9 text-neutral-grey-900">
+        <h1 className="text-2xl font-bold mb-4 text-neutral-grey-900">
           Contact Us
         </h1>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
@@ -121,7 +121,7 @@ function App() {
               <CustomError message={errors.query_type.message} isRadio={true} />
             )}
           </div>
-          <div className="mt-3">
+          {/* <div> */}
             <CustomTextArea
               label="Message"
               id="message"
@@ -129,8 +129,8 @@ function App() {
               fieldId="message"
               errors={errors.message}
             />
-          </div>
-          <div className=" my-9">
+          {/* </div> */}
+          <div className="my-6">
             <CustomCheckboxInput
               label={"I consent to being contacted by the team"}
               id="agree"

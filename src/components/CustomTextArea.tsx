@@ -40,7 +40,7 @@ const CustomTextArea = ({
         {...textAreaProps}
         {...register(fieldId)}
         className={
-          "h-60 border-2 rounded-lg border-neutral-grey-500 hover:border-primary-green-600 hover:cursor-pointer focus:border-primary-green-600 focus:outline-none p-3 resize-none" +
+          "h-60 border-2 rounded-lg border-neutral-grey-500 hover:border-primary-green-600 hover:cursor-pointer focus:border-primary-green-600 focus:outline-none p-3 resize-none md:h-[105px]" +
           (isError ? " border-primary-red focus:border-primary-red" : "")
         }
       ></textarea>

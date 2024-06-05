@@ -28,7 +28,7 @@ const CustomTextInput = ({
 }: CustomTextInputProps) => {
   const isError = errors ? true : false;
   return (
-    <div className="flex flex-col mb-6 flex-1">
+    <div className="flex flex-col mb-2 flex-1">
       <CustomInputLabel htmlFor={inputProps.id} label={label} />
       <input
         type="text"
